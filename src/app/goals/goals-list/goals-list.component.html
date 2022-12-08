@@ -1,8 +1,8 @@
 <div class="container w-50 p-3 border rounded">
   <div class="forms-list">
-    <h3>Goals:</h3>
+    <span class="pull-left title">Goals</span>
     <ul class="list-group">
-      <li class="list-group-item">Test</li>
+      <app-goal-item *ngFor="let goal of goals" [goal]="goal"></app-goal-item>
     </ul>
   </div>
 </div>
