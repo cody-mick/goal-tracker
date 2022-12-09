@@ -8,7 +8,7 @@ import { GoalsService } from '../goals.service';
   styleUrls: ['./goal-item.component.scss'],
 })
 export class GoalItemComponent implements OnInit {
-  @Input() goal: Goal;
+  @Input() goal: Goal | undefined;
 
   constructor(private goalsService: GoalsService) {}
 

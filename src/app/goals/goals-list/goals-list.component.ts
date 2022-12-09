@@ -9,9 +9,9 @@ import { GoalsService } from '../goals.service';
   styleUrls: ['./goals-list.component.scss'],
 })
 export class GoalsListComponent implements OnInit, OnDestroy {
-  goals: Goal[];
-  selectedGoal: Goal;
-  subscription: Subscription;
+  goals: Goal[] | undefined;
+  selectedGoal: Goal | undefined;
+  subscription!: Subscription;
 
   constructor(private goalsService: GoalsService) {}
 

@@ -8,10 +8,18 @@ import { GoalsComponent } from './goals/goals.component';
 import { NewGoalComponent } from './goals/new-goal/new-goal.component';
 import { GoalsListComponent } from './goals/goals-list/goals-list.component';
 import { GoalItemComponent } from './goals/goal-item/goal-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, GoalsComponent, NewGoalComponent, GoalsListComponent, GoalItemComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    GoalsComponent,
+    NewGoalComponent,
+    GoalsListComponent,
+    GoalItemComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
