@@ -1,8 +1,17 @@
-<form class="w-50 p-3 border rounded mx-auto mt-3">
+<form
+  id="new-goal"
+  #f="ngForm"
+  (ngSubmit)="onSubmit(f)"
+  class="w-50 p-3 border rounded mx-auto mt-3"
+>
   <div class="form-group mt-2">
     <label for="newGoalName">Goal</label>
     <input
       type="text"
+      name="name"
+      [ngModel]="goal?.name"
+      required="true"
+      #name="ngModel"
       class="form-control"
       id="newGoalName"
       placeholder="New Goal..."
@@ -18,6 +27,10 @@
       id="newGoalStart"
       class="form-control"
       placeholder="Start Date"
+      name="startDate"
+      [ngModel]="goal?.startDate"
+      required="true"
+      #startDate="ngModel"
     />
   </div>
   <div class="form-group mt-2">
@@ -27,11 +40,21 @@
       id="newGoalEnd"
       class="form-control"
       placeholder="End Date"
+      name="endDate"
+      [ngModel]="goal?.endDate"
+      #endDate="ngModel"
     />
   </div>
   <div class="form-group mt-2">
     <label for="newGoalDescription">Description:</label>
-    <textarea class="form-control" id="newGoalDescription" rows="5"></textarea>
+    <textarea
+      class="form-control"
+      id="newGoalDescription"
+      rows="5"
+      name="details"
+      [ngModel]="goal?.details"
+      #details="ngModel"
+    ></textarea>
   </div>
   <button type="submit" class="btn btn-primary mb-2 mt-2">Create Goal</button>
 </form>

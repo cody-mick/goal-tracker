@@ -13,6 +13,7 @@ const index = require("./server/routes/app");
 dotenv.config();
 
 //* IMPORT ROUTING FILES
+const goalsRoutes = require("./server/routes/goals");
 const { use } = require("./server/routes/app");
 
 // connect to MongoDB
@@ -56,6 +57,9 @@ app.use(express.static(path.join(__dirname, "dist/goal-tracker")));
 
 // Tell express to map the default route ('/') to the index route
 app.use("/", index);
+
+// Map URL's to routing files
+app.use("/goals", goalsRoutes);
 
 // Tell express to map all other non-defined routes back to the index page
 app.get("*", (req, res) => {
