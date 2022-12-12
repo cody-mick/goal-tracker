@@ -1,3 +1,6 @@
-<li class="list-item clearfix documentDiv">
+<li
+  class="list-group-item clearfix documentDiv d-flex flex-row justify-content-between"
+>
   <a [routerLink]="[goal.name]" routerLinkActive="active">{{ goal?.name }}</a>
+  <button type="button" class="btn btn-primary">Edit</button>
 </li>

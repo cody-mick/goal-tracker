@@ -19,6 +19,7 @@ export class NewGoalComponent implements OnInit {
     const value = form.value;
     console.log('FORM SUBMISSION: ', value);
     const newGoal = new Goal(
+      value.goalId,
       value.name,
       value.startDate,
       value.endDate,

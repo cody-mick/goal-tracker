@@ -16,9 +16,9 @@ export class GoalsService {
 
   getGoals() {
     return this.http
-      .get<{ message: string; goals: Goal[] }>('http://localhost:8888')
+      .get<{ message: string; goals: Goal[] }>('http://localhost:8888/goals')
       .subscribe((response) => {
-        console.log(response.message);
+        console.log('GET MESSAGE: ', response.message);
         this.goals = response.goals;
         let goalsClone = this.goals.slice();
         this.goalListChangedEvent.next(goalsClone);
@@ -27,6 +27,7 @@ export class GoalsService {
 
   addGoal(newGoal: Goal) {
     if (!newGoal) return;
+    newGoal.goalId = '';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http
       .post<{ message: string; goal: Goal }>(
@@ -38,20 +39,10 @@ export class GoalsService {
       )
       .subscribe((responseData) => {
         this.goals.push(responseData.goal);
-        // let goalsListClone = this.goals.slice();
-        // this.storeGoals(goalsListClone);
       });
   }
 
-  // storeGoals(goals: Goal[]) {
-  //   const stringifiedGoals = JSON.stringify(this.goals);
-  //   return this.http
-  //     .put('http://localhost:8888/goals', stringifiedGoals, {
-  //       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  //     })
-  //     .subscribe(() => {
-  //       let goalsClone = this.goals.slice();
-  //       this.goalListChangedEvent.next(goalsClone);
-  //     });
-  // }
+  getGoal(name: string) {
+    this.goals.find((g: Goal) => g.name === name);
+  }
 }

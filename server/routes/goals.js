@@ -20,6 +20,7 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   const goal = new Goal({
+    goalId: 1,
     name: req.body.name,
     startDate: req.body.startDate,
     endDate: req.body.endDate,

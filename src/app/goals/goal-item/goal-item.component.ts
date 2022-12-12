@@ -13,4 +13,8 @@ export class GoalItemComponent implements OnInit {
   constructor(private goalsService: GoalsService) {}
 
   ngOnInit(): void {}
+
+  onSelected() {
+    this.goalsService.goalSelectedEvent.emit(this.goal);
+  }
 }
