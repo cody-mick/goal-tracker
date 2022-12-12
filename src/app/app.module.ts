@@ -10,6 +10,7 @@ import { GoalsListComponent } from './goals/goals-list/goals-list.component';
 import { GoalItemComponent } from './goals/goal-item/goal-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { GoalEditComponent } from './goals/goal-edit/goal-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     NewGoalComponent,
     GoalsListComponent,
     GoalItemComponent,
+    GoalEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
