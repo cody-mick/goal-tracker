@@ -19,8 +19,9 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
+  console.log("NEW GOAL ID: ", req.body.goalId);
   const goal = new Goal({
-    goalId: 1,
+    goalId: req.body.goalId,
     name: req.body.name,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
