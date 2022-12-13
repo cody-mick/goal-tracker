@@ -1,1 +1,11 @@
-<p>goal-detail works!</p>
+<div class="card mt-3 mx-auto" style="width: 50%">
+  <div class="card-body" *ngIf="goal">
+    <div class="card-header">Goal Details</div>
+    <h5 class="card-title mt-2">{{ goal.name }}</h5>
+    <p class="card-text">Starting: {{ goal.startDate }}</p>
+    <p class="card-text">Ending: {{ goal.endDate }}</p>
+    <p class="card-text">Details: {{ goal.details }}</p>
+    <button class="btn btn-primary m-2" [routerLink]="['edit']">Edit</button>
+    <button class="btn btn-danger m-2" (click)="onDelete()">Delete</button>
+  </div>
+</div>

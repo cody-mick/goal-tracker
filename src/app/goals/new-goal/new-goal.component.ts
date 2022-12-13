@@ -35,5 +35,6 @@ export class NewGoalComponent implements OnInit {
     );
 
     this.goalService.addGoal(newGoal);
+    this.router.navigate(['/goals']);
   }
 }

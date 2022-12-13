@@ -41,7 +41,34 @@ export class GoalsService {
       });
   }
 
-  getGoal(id: string) {
-    this.goals.find((g: Goal) => g.goalId === id);
+  getGoal(id: string): any {
+    return this.goals.find((g: Goal) => g.goalId === id);
+  }
+
+  deleteGoal(goal: Goal) {
+    if (!goal) return;
+    const pos = this.goals.indexOf(goal);
+    if (pos < 0) return;
+
+    this.http
+      .delete('http://localhost:8888/goals/' + goal.goalId)
+      .subscribe((response) => {
+        this.goals.splice(pos, 1);
+      });
+  }
+
+  updateGoal(originalGoal: Goal, newGoal: Goal) {
+    if (!originalGoal || !newGoal) return;
+    let pos = this.goals.indexOf(originalGoal);
+    if (pos < 0) return;
+    newGoal.goalId = originalGoal.goalId;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http
+      .put(`http://localhost:8888/goals/${originalGoal.goalId}`, newGoal, {
+        headers: headers,
+      })
+      .subscribe((response) => {
+        this.goals[pos] = newGoal;
+      });
   }
 }
