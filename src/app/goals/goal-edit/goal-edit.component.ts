@@ -10,7 +10,7 @@ import { GoalsService } from '../goals.service';
   styleUrls: ['./goal-edit.component.scss'],
 })
 export class GoalEditComponent implements OnInit {
-  id: number | undefined;
+  id: string | undefined;
   originalGoal: Goal | undefined;
   goal: Goal | undefined;
   editMode: boolean = false;
@@ -26,6 +26,6 @@ export class GoalEditComponent implements OnInit {
   onSubmit(form: NgForm) {}
 
   onCancel() {
-    this.router.navigate(['/goals']);
+    this.router.navigate(['/']);
   }
 }

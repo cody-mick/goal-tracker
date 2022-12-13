@@ -27,7 +27,6 @@ export class GoalsService {
 
   addGoal(newGoal: Goal) {
     if (!newGoal) return;
-    newGoal.goalId = '';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.http
       .post<{ message: string; goal: Goal }>(
@@ -42,7 +41,7 @@ export class GoalsService {
       });
   }
 
-  getGoal(name: string) {
-    this.goals.find((g: Goal) => g.name === name);
+  getGoal(id: string) {
+    this.goals.find((g: Goal) => g.goalId === id);
   }
 }

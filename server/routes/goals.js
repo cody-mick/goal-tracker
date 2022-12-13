@@ -43,4 +43,56 @@ router.post("/", (req, res, next) => {
     });
 });
 
+router.put("/:goalId", (req, res, next) => {
+  Goal.findOne({ id: req.params.goalId })
+    .then((goal) => {
+      (goal.name = req.body.name),
+        (goal.startDate = req.body.startDate),
+        (goal.endDate = req.body.endDate),
+        (goal.details = req.body.details);
+
+      Goal.updateOne({ id: req.params.goalId }, goal)
+        .then((result) => {
+          res.status(204).json({
+            message: "Goal updated successfully!",
+          });
+        })
+        .catch((error) => {
+          res.status(500).json({
+            message: "An error occurred",
+          });
+        });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Goal not found",
+        error: { goal: "Goal not found" },
+      });
+    });
+});
+
+router.delete("/:goalId", (req, res, next) => {
+  Goal.findOne({ id: req.params.goalId })
+    .then((goal) => {
+      Goal.deleteOne({ id: req.params.id })
+        .then((result) => {
+          res.status(204).json({
+            message: "Goal deleted successfully",
+          });
+        })
+        .catch((error) => {
+          res.status(500).json({
+            message: "An error occurred",
+            error: error,
+          });
+        });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Goal not found",
+        error: { goal: "Goal not found" },
+      });
+    });
+});
+
 module.exports = router;
