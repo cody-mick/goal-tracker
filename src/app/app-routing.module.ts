@@ -13,10 +13,10 @@ const routes: Routes = [
     children: [
       { path: 'new', component: NewGoalComponent },
       {
-        path: 'goal-detail/:goalId',
+        path: ':goalId',
         component: GoalDetailComponent,
-        children: [{ path: 'edit', component: GoalEditComponent }],
       },
+      { path: ':goalId/edit', component: GoalEditComponent },
     ],
   },
   {

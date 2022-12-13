@@ -1,1 +1,63 @@
-<p>goal-edit works!</p>
+<div class="card mt-3 mx-auto" style="width: 50%">
+  <div class="card-body">
+    <div class="card-header">Edit Goal</div>
+    <form id="goal-edit" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group mt-2">
+        <label for="name">Goal Name:</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          name="name"
+          [ngModel]="goal?.name"
+          required="true"
+          #name="ngModel"
+        />
+      </div>
+      <div class="form-group mt-2">
+        <label for="start-date">Start Date:</label>
+        <input
+          type="text"
+          id="start-date"
+          class="form-control"
+          name="startDate"
+          [ngModel]="goal?.startDate"
+          required="true"
+          #startDate="ngModel"
+        />
+      </div>
+      <div class="form-group mt-2">
+        <label for="end-date">End Date:</label>
+        <input
+          type="text"
+          id="end-date"
+          class="form-control"
+          name="endDate"
+          [ngModel]="goal?.endDate"
+          #endDate="ngModel"
+        />
+      </div>
+      <div class="form-group mt-2">
+        <label for="details">Details</label>
+        <textarea
+          name="details"
+          id="details"
+          rows="5"
+          class="form-control"
+          [ngModel]="goal?.details"
+          #details="ngModel"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2 mt-2">
+        Save Changes
+      </button>
+      <button
+        type="button"
+        class="btn btn-warning mb-2 mt-2"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>

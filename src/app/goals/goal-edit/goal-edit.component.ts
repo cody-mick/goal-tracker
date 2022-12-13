@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Goal } from '../goal.model';
 import { GoalsService } from '../goals.service';
 
@@ -21,11 +21,39 @@ export class GoalEditComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['goalId'];
+      if (!this.id) {
+        this.editMode = false;
+        return;
+      }
+      this.originalGoal = this.goalService.getGoal(this.id);
+      if (!this.originalGoal) return;
+      this.editMode = true;
+      this.goal = { ...this.originalGoal };
+    });
+  }
 
-  onSubmit(form: NgForm) {}
+  onSubmit(form: NgForm) {
+    const value = form.value;
+    const newGoal = new Goal(
+      '1',
+      value.name,
+      value.startDate,
+      value.endDate,
+      value.details
+    );
+
+    if (this.editMode) {
+      this.goalService.updateGoal(this.originalGoal, newGoal);
+    } else {
+      this.goalService.addGoal(newGoal);
+    }
+    this.router.navigate(['/goals']);
+  }
 
   onCancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/goals']);
   }
 }
