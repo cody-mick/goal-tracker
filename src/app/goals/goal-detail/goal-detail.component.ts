@@ -27,6 +27,6 @@ export class GoalDetailComponent implements OnInit {
 
   onDelete() {
     this.goalService.deleteGoal(this.goal);
-    this.router.navigate(['/']);
+    this.router.navigate(['/goals']);
   }
 }
